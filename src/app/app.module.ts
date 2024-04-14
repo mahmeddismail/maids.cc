@@ -11,6 +11,8 @@ import { Router, RouterModule } from '@angular/router';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
 import { SearchByIdPipe } from './pipes/search-by-id.pipe';
+import { LoadingComponent } from './components/loading/loading.component';
+import { LoadingInterceptor } from './interceptor/loading.interceptor';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,8 @@ import { SearchByIdPipe } from './pipes/search-by-id.pipe';
     UserComponent,
     NotFoundComponent,
     UserDetailsComponent,
-    SearchByIdPipe
+    SearchByIdPipe,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +32,11 @@ import { SearchByIdPipe } from './pipes/search-by-id.pipe';
     FormsModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: LoadingInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

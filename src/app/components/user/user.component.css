@@ -1,0 +1,15 @@
+.myBoxBorder {
+    border: 1px solid rgba(208, 208, 208, 0.54);
+    transition: background-color .25s;
+}
+
+
+.myBoxBorder:hover {
+    background-color: rgb(52, 245, 235);
+    box-shadow:1px 1px #b9b9b9;
+}
+
+.myBoxBorder:hover .userInfo h1
+,.myBoxBorder:hover .userInfo span {
+    color: black !important;
+}
